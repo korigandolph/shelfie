@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
+// import axios from 'axios';
 
 class Product extends Component {
     render(){
         return(
             <div>
-                <div>Product</div>
-                <h1>{this.props.inventory.name}</h1>
-                <h1>{this.props.inventory.price}</h1>
-                <img src = {this.props.inventory.imgurl} alt='img' />
+        <img src={this.props.imgurl} alt='url'/>
+        <div>
+        <div>
+          <div>Name: {this.props.name}</div>
+          <div>Price: ${this.props.price}</div>
+        </div>
+        <div>
+        <button>Edit</button>
+        <button
+          onClick={() => this.props.deleteProduct(this.props.id)}
+        >Delete</button>
+        </div>
+      </div>
             </div>
         )
     }
