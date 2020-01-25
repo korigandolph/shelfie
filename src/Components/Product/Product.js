@@ -13,8 +13,7 @@ class Product extends Component {
         </div>
         <div>
         <button>Edit</button>
-        <button
-          onClick={() => this.props.deleteProduct(this.props.id)}
+        <button onClick={() => this.props.deleteProduct(this.props.id)}
         >Delete</button>
         </div>
       </div>
