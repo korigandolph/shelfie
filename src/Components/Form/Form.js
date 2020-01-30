@@ -8,7 +8,7 @@ class Form extends Component {
         this.state={
             id: 0,
             name: '',
-            price: 0,
+            price: '',
             imgurl: '',
             edit: false
         };
@@ -16,9 +16,11 @@ class Form extends Component {
     }
 
     componentDidMount () {
+        
         if (this.props.match.params.id) {
             axios.get(`/api/productOne/${this.props.match.params.id}`)
             .then(res=> {
+                
                 const {name, price, imgurl} = res.data 
                 this.setState({name: name, price: price, imgurl: imgurl, edit: true, id: this.props.match.params.id})
             })
@@ -34,7 +36,7 @@ class Form extends Component {
         this.props.history.push('/')
         this.setState ({
             name: '',
-            price: 0,
+            price: '',
             imgurl: ''
         })
     }
@@ -57,8 +59,9 @@ class Form extends Component {
   }
 
     render(){
+        console.log(this.state)
         return(
-            <div>
+            <div className = 'form'>
         <h1>Image Url:</h1> 
         <input
           name='imgurl'
@@ -76,6 +79,7 @@ class Form extends Component {
         <h1>Price: </h1>
         <input
           name='price'
+          placeholder = 'Price'
           value={this.state.price}
           onChange={(e) => this.handleChange(e.target)}
         />

@@ -22,16 +22,16 @@ class Dashboard extends Component {
     }).catch(err=>console.log(err))
   }
 
-  deleteProduct =(id)=>{
-    axios.delete (`/api/product/${id}`).then(results=> {
-      this.props.getInventory()
-      this.setState({inventory: results.data})
-    }).catch(err=>console.log(err))
-  }
+  // deleteProduct =(id)=>{
+  //   axios.delete (`/api/product/${id}`).then(results=> {
+  //     this.props.getInventory()
+  //     this.setState({inventory: results.data})
+  //   }).catch(err=>console.log(err))
+  // }
 
-  productEdit=(id)=>{
-    this.props.history.push(`/form/${id}`)
-  }
+  // productEdit=(id)=>{
+  //   this.props.history.push(`/form/${id}`)
+  // }
 
     render(){
         return(
@@ -40,9 +40,11 @@ class Dashboard extends Component {
             <button onClick={() => this.props.history.push('/form')}>New Product</button>
       {this.state.inventory.map(element => (
       <Product 
-      productEdit = {this.productEdit} 
+      // productEdit = {this.productEdit}
+      getInventory = {this.getInventory} 
       key={element.id} product={element} 
-      deleteProduct={this.deleteProduct} />
+      // deleteProduct={this.deleteProduct} 
+      />
       ))
     }
             </div>
